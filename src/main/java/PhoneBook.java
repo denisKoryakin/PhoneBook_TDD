@@ -35,6 +35,11 @@ public class PhoneBook {
     }
 
     public String findByName(String name) {
-        return null;
+        Optional<String> result = contacts.entrySet()
+                .stream()
+                .filter(entry -> name.equals(entry.getKey()))
+                .map(Map.Entry::getValue)
+                .findFirst();
+        return result.orElse(null);
     }
 }
