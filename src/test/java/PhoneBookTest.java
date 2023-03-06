@@ -58,4 +58,24 @@ public class PhoneBookTest {
                 Arguments.of(null, "99009090900")
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("findByNameParametersDefinition")
+    public void testFindByName(String name, String number) {
+//    arrange
+        phoneBook.add("Иван", "89527812756");
+        phoneBook.add("Ирина", "87538956759");
+//    act
+        String result = phoneBook.findByName(name);
+//    assert
+        Assertions.assertEquals(number, result);
+    }
+
+    private static Stream<Arguments> findByNameParametersDefinition() {
+        return Stream.of(
+                Arguments.of("Иван", "89527812756"),
+                Arguments.of("Ирина", "87538956759"),
+                Arguments.of("Антон", null)
+        );
+    }
 }

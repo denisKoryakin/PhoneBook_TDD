@@ -33,4 +33,8 @@ public class PhoneBook {
                 .findFirst();
         return result.orElse(null);
     }
+
+    public String findByName(String name) {
+        return null;
+    }
 }
