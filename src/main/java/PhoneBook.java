@@ -1,15 +1,18 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class PhoneBook {
 
     private Map<String, String> contacts = new HashMap<>();
     private static PhoneBook instance = null;
 
-    private PhoneBook() {}
+    private PhoneBook() {
+    }
 
     public static PhoneBook get() {
-        if(instance ==null) {
+        if (instance == null) {
             instance = new PhoneBook();
         }
         return instance;
@@ -22,7 +25,12 @@ public class PhoneBook {
         return contacts.size();
     }
 
-    public String findByNumber (String number) {
-        return null;
+    public String findByNumber(String number) {
+        Optional<String> result = contacts.entrySet()
+                .stream()
+                .filter(entry -> number.equals(entry.getValue()))
+                .map(Map.Entry::getKey)
+                .findFirst();
+        return result.orElse(null);
     }
 }

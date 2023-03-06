@@ -43,6 +43,8 @@ public class PhoneBookTest {
     @MethodSource("findByNumberParametersDefinition")
     public void testFindByNumber(String name, String number) {
 //    arrange
+        phoneBook.add("Иван", "89527812756");
+        phoneBook.add("Ирина", "87538956759");
 //    act
         String result = phoneBook.findByNumber(number);
 //    assert
