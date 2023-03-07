@@ -1,7 +1,8 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public class PhoneBook {
 
@@ -41,5 +42,8 @@ public class PhoneBook {
                 .map(Map.Entry::getValue)
                 .findFirst();
         return result.orElse(null);
+    }
+
+    public void printAllNames() {
     }
 }
